@@ -164,14 +164,6 @@ export const TextModeInterface: React.FC<TextModeInterfaceProps> = ({
         </section>
       </div>
 
-      {/* Persistent Floating Bottom Input & Quick Action Pill Dock */}
-      <FloatingAdjustmentPill
-        cartTotal={cartTotal}
-        isListening={false}
-        onSubmitText={onSubmitAdjustment}
-        onMicClick={onMicClick}
-        onCheckout={onCheckout}
-      />
     </div>
   );
 };

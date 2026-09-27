@@ -376,20 +376,26 @@ export function App() {
                 ))}
               </div>
 
-              {/* 6. Floating Bottom Pill Component */}
-              <FloatingAdjustmentPill
-                cartTotal={cartTotal}
-                isListening={isListening}
-                onSubmitText={(text) => handleUserInput(text, 'voice')}
-                onMicClick={() => {
-                  if (isListening) stopListening();
-                  else startListening();
-                }}
-                onCheckout={handleCheckout}
-              />
+
             </motion.div>
           )}
         </AnimatePresence>
+        
+        {/* Persistent Floating Bottom Pill Component */}
+        {!finalWinner && (
+          <FloatingAdjustmentPill
+            cartTotal={cartTotal}
+            isListening={isListening}
+            viewMode={viewMode}
+            onSubmitText={(text) => handleUserInput(text, viewMode === 'chat' ? 'chat' : 'voice')}
+            onMicClick={() => {
+              if (viewMode === 'chat') handleStartVoice();
+              else if (isListening) stopListening();
+              else startListening();
+            }}
+            onCheckout={handleCheckout}
+          />
+        )}
       </main>
 
       {/* Settings, History & Location Modals */}
